@@ -78,7 +78,7 @@ func f2() error {
 }
 
 func f3() error {
-	return fmt.Errorf("%s", "It is F1")
+	return fmt.Errorf("%s", "F3 raised error")
 }
 
 func main() {
