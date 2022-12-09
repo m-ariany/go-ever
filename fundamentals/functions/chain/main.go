@@ -24,6 +24,10 @@ func (s *Step) SetNextStep(nextStep *Step) {
 
 func (s *Step) Execute() {
 
+	if s.executionFunc == nil {
+		panic("No function is presented")
+	}
+
 	if err := s.executionFunc(); err != nil {
 		fmt.Printf("Error: %s \n", err)
 	}
@@ -78,6 +82,7 @@ func f3() error {
 }
 
 func main() {
+
 	cb := NewChainBuilder()
 	firstStep := cb.SetNextStep(NewStep(f1)).
 		SetNextStep(NewStep(f2)).
