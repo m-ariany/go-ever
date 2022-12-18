@@ -1,25 +1,48 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
+
+type Revolution struct {
+	Name  string
+	Date  int
+	Heros []string
+}
 
 func main() {
-	// a pointer is a value that contains the address of a variable
+	intro()
 
+	r := Revolution{
+		Name: "Zan, Zendegi, Azadi",
+		Date: time.Now().Year(),
+	}
+
+	passByValue(r)
+	fmt.Println(r)
+
+	passByRef(&r)
+	fmt.Println(r)
+}
+
+func intro() {
 	var i int8 = 54
-	// the & operator yields the address of a variable,
-	p := &i
-	fmt.Println("memory address of i is:", p)
-	// the * operator retrieves the variable that thepointer refers to
-	fmt.Println("p points to a variable with value:", *p)
+	fmt.Println("memory address of i is:", &i)
+
+	var p *int8
+	p = &i
+	fmt.Printf("p points to %p memory address: \n", p)
+	fmt.Printf("memory address %p stores value %d \n", p, *p)
+
 	*p = 100
-	fmt.Println("i is:", i)
+	fmt.Println("Value of i is: ", i)
+}
 
-	// p points to a specific data type, here int8, and cannot hold a value from another data type
-	// *p = "Go" //string
-	// *p = 3456787654567 //int64
+func passByValue(r Revolution) {
+	r.Heros = append(r.Heros, "Mahsa", "Khodanoor", "Kian", "80.000.000+")
+}
 
-	// a pointer can be nil
-	var p1 *int8 = nil
-	fmt.Println(p1)
-	// var i1 int8 = nil //illegal
+func passByRef(r *Revolution) {
+	r.Heros = append(r.Heros, "Mahsa", "Khodanoor", "Kian", "80.000.000+")
 }
