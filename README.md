@@ -1,3 +1,3 @@
-# Go-ever
+# [MOVED]
 
-This repository provides downloadable sample programs writen in Go.
+This repository is moved to https://github.com/LearnGoFarsi/go-basics 
